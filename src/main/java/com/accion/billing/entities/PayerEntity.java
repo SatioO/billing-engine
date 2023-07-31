@@ -1,9 +1,6 @@
 package com.accion.billing.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +12,7 @@ import org.hibernate.annotations.Where;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "payers")
@@ -81,4 +79,12 @@ public class PayerEntity {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @ManyToMany
+    @JoinTable(
+            name = "payers_contracts_mapper",
+            joinColumns = @JoinColumn(name = "payer_id"),
+            inverseJoinColumns = @JoinColumn(name = "contract_id")
+    )
+    private List<ContractEntity> contracts;
 }

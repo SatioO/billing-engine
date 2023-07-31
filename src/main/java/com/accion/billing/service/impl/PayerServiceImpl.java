@@ -1,11 +1,13 @@
 package com.accion.billing.service.impl;
 
+import com.accion.billing.entities.ContractEntity;
 import com.accion.billing.entities.PayerEntity;
 import com.accion.billing.models.dto.common.PageDTO;
 import com.accion.billing.models.dto.common.PageMetaDTO;
 import com.accion.billing.models.dto.payer.CreateOrUpdatePayerDTO;
 import com.accion.billing.models.dto.payer.PayerDTO;
 import com.accion.billing.models.mapper.PayerMapper;
+import com.accion.billing.repository.ContractRepository;
 import com.accion.billing.repository.PayerRepository;
 import com.accion.billing.service.PayerService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,10 +24,12 @@ import java.util.stream.Collectors;
 @Service
 public class PayerServiceImpl implements PayerService {
     private final PayerRepository payerRepository;
+    private final ContractRepository contractRepository;
     private final PayerMapper mapper;
 
-    public PayerServiceImpl(PayerRepository payerRepository, PayerMapper mapper) {
+    public PayerServiceImpl(PayerRepository payerRepository, ContractRepository contractRepository, PayerMapper mapper) {
         this.payerRepository = payerRepository;
+        this.contractRepository = contractRepository;
         this.mapper = mapper;
     }
 
@@ -46,7 +50,11 @@ public class PayerServiceImpl implements PayerService {
 
     @Override
     public PayerDTO createOrUpdatePayer(CreateOrUpdatePayerDTO body) {
+        List<ContractEntity> contracts = contractRepository.getContracts(body.contracts());
+
         PayerEntity mappedPayer = mapper.createOrUpdatePayerDtoToPayerEntity(body);
+        mappedPayer.setContracts(contracts);
+
         PayerEntity payer = payerRepository.save(mappedPayer);
         return mapper.toModel(payer);
     }

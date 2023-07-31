@@ -1,9 +1,6 @@
 package com.accion.billing.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +13,7 @@ import org.hibernate.annotations.Where;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "contracts")
@@ -48,4 +46,7 @@ public class ContractEntity {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @ManyToMany(mappedBy = "contracts")
+    private List<PayerEntity> payers;
 }

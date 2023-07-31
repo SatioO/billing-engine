@@ -1,7 +1,11 @@
 package com.accion.billing.models.dto.payer;
 
+import com.accion.billing.models.dto.contract.ContractDTO;
+
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public record PayerDTO(
     String id,
@@ -50,5 +54,13 @@ public record PayerDTO(
     String clearinghouseCode,
 
     LocalDateTime createdAt,
-    LocalDateTime updatedAt
-){}
+    LocalDateTime updatedAt,
+
+    List<ContractDTO> contracts
+){
+    public PayerDTO {
+        if(contracts == null) {
+            contracts = new ArrayList<>();
+        }
+    }
+}

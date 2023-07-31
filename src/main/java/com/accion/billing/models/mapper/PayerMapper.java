@@ -15,5 +15,6 @@ public interface PayerMapper extends EntityMapper<PayerEntity, PayerDTO> {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "deleted", ignore = true)
+    @Mapping(target = "contracts", ignore = true)
     PayerEntity createOrUpdatePayerDtoToPayerEntity(CreateOrUpdatePayerDTO dto);
 }
