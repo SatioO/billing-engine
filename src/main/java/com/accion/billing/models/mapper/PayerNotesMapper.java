@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface PayerNotesMapper extends EntityMapper<PayerNoteEntity, PayerNoteDTO> {
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "payer", ignore = true)
     PayerNoteEntity toEntity(PayerNoteDTO dto);
 }

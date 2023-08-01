@@ -53,6 +53,6 @@ public class ContractServiceImpl implements ContractService {
 
         if(foundContract.isPresent()) {
             contractRepository.deleteById(contractId);
-        };
+        }
     }
 }

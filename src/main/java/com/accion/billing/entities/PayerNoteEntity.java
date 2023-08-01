@@ -5,10 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
-
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "payers_notes")
@@ -20,8 +16,8 @@ public class PayerNoteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String note;
-    private String invoice;
+    private String text;
+    private String invoiceText;
 
     @OneToOne
     @JoinColumn(name = "payer_id")
