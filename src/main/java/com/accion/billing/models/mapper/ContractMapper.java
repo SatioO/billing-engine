@@ -8,9 +8,11 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface ContractMapper extends EntityMapper<ContractEntity, ContractDTO> {
+    @Mapping(target = "payers", ignore = true)
     @Mapping(target = "deleted", ignore = true)
     ContractEntity toEntity(ContractDTO model);
 
+    @Mapping(target = "payers", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "deleted", ignore = true)

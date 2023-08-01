@@ -38,7 +38,7 @@ public class ProcedureEntity {
 
     private BigDecimal cost;
 
-    private BigDecimal defaultUnits = BigDecimal.valueOf(1.00);
+    private BigDecimal defaultUnits;
 
     private String defaultModifier;
 

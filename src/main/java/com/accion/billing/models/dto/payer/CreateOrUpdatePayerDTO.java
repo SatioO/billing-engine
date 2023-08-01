@@ -3,6 +3,7 @@ package com.accion.billing.models.dto.payer;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 public record CreateOrUpdatePayerDTO(
@@ -58,6 +59,13 @@ public record CreateOrUpdatePayerDTO(
 
         String clearinghouseCode,
 
-        List<BigInteger> contracts
-){}
+        List<BigInteger> contracts,
+        PayerNoteDTO note
+){
+        public CreateOrUpdatePayerDTO {
+                if(contracts == null) {
+                        contracts = new ArrayList<>();
+                }
+        }
+}
 

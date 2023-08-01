@@ -56,11 +56,7 @@ public record PayerDTO(
     LocalDateTime createdAt,
     LocalDateTime updatedAt,
 
-    List<ContractDTO> contracts
+    List<ContractDTO> contracts,
+    PayerNoteDTO note
 ){
-    public PayerDTO {
-        if(contracts == null) {
-            contracts = new ArrayList<>();
-        }
-    }
 }

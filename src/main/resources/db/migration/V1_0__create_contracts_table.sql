@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS contracts;
+
 CREATE TABLE contracts(
     id NUMERIC(5,0) NOT NULL,
     name VARCHAR(40) NOT NULL,

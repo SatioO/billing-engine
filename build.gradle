@@ -23,6 +23,7 @@ flyway {
 	password='postgres'
 	url='jdbc:postgresql://localhost:5432/touchstone_db'
 	driver='org.postgresql.Driver'
+	cleanDisabled = false
 }
 
 configurations {

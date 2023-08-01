@@ -32,10 +32,9 @@ public class ContractServiceImpl implements ContractService {
     public PageDTO<List<ContractDTO>> getContracts(Pageable pageable) {
         Page<ContractEntity> foundContracts = contractRepository.findAll(pageable);
 
-        return new PageDTO<>(
-            foundContracts.stream().map(mapper::toModel).collect(Collectors.toList()),
-            new PageMetaDTO<>(foundContracts)
-        );
+        List<ContractDTO> contracts = foundContracts.stream().map(mapper::toModel).collect(Collectors.toList());
+
+        return new PageDTO<>(contracts, new PageMetaDTO<>(foundContracts));
     }
 
     public Optional<ContractDTO> getContractById(BigInteger contractId) {

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS payers_contracts_mapper;
+
 CREATE TABLE payers_contracts_mapper (
     payer_id NUMERIC(10,0) NOT NULL,
     contract_id NUMERIC(5,0) NOT NULL,

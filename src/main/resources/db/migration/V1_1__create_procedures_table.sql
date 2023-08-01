@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS procedures;
+
 CREATE TABLE procedures(
     code VARCHAR(10) NOT NULL,
     description VARCHAR(40) NOT NULL,

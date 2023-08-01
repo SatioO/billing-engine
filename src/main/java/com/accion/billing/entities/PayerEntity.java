@@ -87,4 +87,7 @@ public class PayerEntity {
             inverseJoinColumns = @JoinColumn(name = "contract_id")
     )
     private List<ContractEntity> contracts;
+
+    @OneToOne(mappedBy = "payer")
+    private PayerNoteEntity note;
 }

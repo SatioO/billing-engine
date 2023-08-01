@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS payers;
+
 CREATE TABLE payers(
     id NUMERIC(10,0) NOT NULL,
     code VARCHAR(10),
